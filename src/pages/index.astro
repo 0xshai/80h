@@ -1,0 +1,127 @@
+---
+import '../styles/custom.css';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>闪光小破站 — 精选工具书签</title>
+    <meta name="description" content="精选开源工具与隐私友好资源书签，持续更新。" />
+  </head>
+  <body>
+    <div class="frame">
+      <header class="nav">
+        <a class="wordmark" href={`${base}/`}>闪光小破站</a>
+        <nav class="nav-links">
+          <a href={`${base}/bookmarks`}>书签</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-left">
+            <h1>精选工具<br />一网打尽</h1>
+            <p class="lede">
+              收录开源、隐私友好的生产力工具与资源，持续更新。
+            </p>
+            <div class="cta">
+              <a class="btn btn-primary" href={`${base}/bookmarks`}>浏览书签</a>
+            </div>
+          </div>
+          <div class="hero-right">
+            <svg viewBox="0 0 320 240" width="320" height="240" fill="none" stroke="currentColor" stroke-width="1">
+              {[
+                [160,120],[80,60],[240,60],[60,170],[260,170],[130,190],[200,190],
+                [100,100],[220,100],[160,50]
+              ].map(([cx,cy], i) => (
+                <circle cx={cx} cy={cy} r="5" fill="currentColor" stroke="none" opacity={0.6 + i*0.04} />
+              ))}
+              {[
+                [160,120,80,60],[160,120,240,60],[160,120,60,170],[160,120,260,170],
+                [160,120,130,190],[160,120,200,190],[80,60,100,100],[240,60,220,100],
+                [80,60,160,50],[240,60,160,50],[100,100,60,170],[220,100,260,170]
+              ].map(([x1,y1,x2,y2], i) => (
+                <line x1={x1} y1={y1} x2={x2} y2={y2} opacity="0.25" />
+              ))}
+            </svg>
+          </div>
+        </section>
+
+        <section class="features">
+          <article class="feature">
+            <svg class="ficon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="24" cy="24" r="18"/>
+              <path d="M24 6v36M6 24h36"/>
+            </svg>
+            <h2>开源优先</h2>
+            <p>所有书签标注开源状态，优先收录可自托管、可审计的工具。</p>
+          </article>
+          <article class="feature">
+            <svg class="ficon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="8" y="8" width="32" height="32"/>
+              <path d="M8 20h32M20 8v32"/>
+            </svg>
+            <h2>分类清晰</h2>
+            <p>覆盖编程、设计、视频、隐私、AI 等多个领域，快速定位。</p>
+          </article>
+          <article class="feature">
+            <svg class="ficon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M10 38L24 10l14 28M16 28h16"/>
+            </svg>
+            <h2>持续更新</h2>
+            <p>随时收录新工具，删除失效链接，保持内容新鲜度。</p>
+          </article>
+        </section>
+      </main>
+
+      <footer class="foot">
+        <span class="foot-mark">闪光小破站</span>
+        <nav class="foot-links">
+          <a href={`${base}/bookmarks`}>书签</a>
+        </nav>
+      </footer>
+    </div>
+
+    <style>
+      :global(html) { background: var(--cg-paper); }
+      :global(body) { margin: 0; font-family: var(--sl-font); color: var(--cg-ink); overflow-x: hidden; }
+      .frame { max-width: 1440px; margin: 0 auto; border: 1px solid var(--cg-rule); }
+      .nav { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 2rem; border-bottom: 1px solid var(--cg-rule); }
+      .wordmark { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.035em; color: var(--cg-ink); text-decoration: none; }
+      .nav-links { display: flex; align-items: center; gap: 2rem; }
+      .nav-links a { color: var(--cg-ink); text-decoration: none; font-size: 0.98rem; }
+      .nav-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+      .hero { display: grid; grid-template-columns: 1.05fr 0.95fr; border-bottom: 1px solid var(--cg-rule); }
+      .hero-left { padding: 4.5rem 3rem 4rem; }
+      .hero-right { border-inline-start: 1px solid var(--cg-rule); display: flex; align-items: center; justify-content: center; padding: 2.5rem; color: var(--cg-ink); }
+      h1 { font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: 0.98; font-weight: 800; letter-spacing: -0.04em; margin: 0 0 1.6rem; }
+      .lede { font-size: 1.18rem; line-height: 1.5; color: var(--cg-ink-2); max-width: 34ch; margin: 0 0 2.2rem; }
+      .cta { display: flex; gap: 0.9rem; margin-bottom: 1.6rem; flex-wrap: wrap; }
+      .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.8rem 1.5rem; font-size: 1rem; font-weight: 600; text-decoration: none; border: 1px solid var(--cg-rule); transition: background 0.12s, color 0.12s; }
+      .btn-primary { background: var(--cg-ink); color: var(--cg-paper); }
+      .btn-primary:hover { background: transparent; color: var(--cg-ink); }
+      .features { display: grid; grid-template-columns: repeat(3, 1fr); }
+      .feature { display: grid; grid-template-columns: auto 1px 1fr; column-gap: 1.5rem; align-items: center; padding: 2.6rem 2rem; }
+      .feature + .feature { border-inline-start: 1px solid var(--cg-rule); }
+      .feature::before { content: ''; grid-column: 2; grid-row: 1/3; align-self: stretch; width: 1px; background: var(--cg-rule); }
+      .ficon { grid-column: 1; grid-row: 1/3; width: 56px; height: 56px; color: var(--cg-ink); }
+      .feature h2 { grid-column: 3; grid-row: 1; font-size: 1.2rem; font-weight: 700; margin: 0 0 0.5rem; }
+      .feature p { grid-column: 3; grid-row: 2; font-size: 0.95rem; line-height: 1.55; color: var(--cg-ink-2); margin: 0; }
+      .foot { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 2rem; border-top: 1px solid var(--cg-rule); }
+      .foot-mark { font-weight: 800; letter-spacing: -0.03em; }
+      .foot-links { display: flex; gap: 1.6rem; }
+      .foot-links a { color: var(--cg-ink-2); text-decoration: none; font-size: 0.92rem; }
+      .foot-links a:hover { color: var(--cg-ink); text-decoration: underline; text-underline-offset: 3px; }
+      @media (max-width: 860px) {
+        .hero { grid-template-columns: 1fr; }
+        .hero-right { border-inline-start: none; border-top: 1px solid var(--cg-rule); }
+        .features { grid-template-columns: 1fr; }
+        .feature + .feature { border-inline-start: none; border-top: 1px solid var(--cg-rule); }
+        .nav { padding: 1rem 1.25rem; }
+        .hero-left { padding: 2.75rem 1.25rem 2.5rem; }
+      }
+    </style>
+  </body>
+</html>

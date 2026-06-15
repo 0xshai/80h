@@ -1,0 +1,28 @@
+{
+  "name": "bookmarks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.5.2",
+      "onFail": "download"
+    }
+  },
+  "type": "module",
+  "dependencies": {
+    "@astrojs/starlight": "^0.40.0",
+    "@fontsource-variable/archivo": "^5.2.8",
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "astro": "^6.4.6"
+  }
+}
