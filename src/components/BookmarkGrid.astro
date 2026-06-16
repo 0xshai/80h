@@ -1,25 +1,22 @@
 ---
 import { bookmarks } from '../data/bookmarks';
+const { category } = Astro.props;
+const cat = bookmarks.find(c => c.category === category);
 ---
 
-<div class="bookmark-page">
-  {bookmarks.map((cat) => (
-    <section class="bookmark-section" id={cat.category}>
-      <h2 class="section-heading">{cat.category}</h2>
-      <div class="bookmark-grid">
-        {cat.items.map((item) => (
-          <div class="card-wrap">
-            <a href={item.url} target="_blank" rel="noopener noreferrer" class="bookmark-card">
-              <div class="card-header">
-                <span class="card-name">{item.name}</span>
-                {item.opensource && <span class="badge-oss">OSS</span>}
-              </div>
-              <p class="card-desc">{item.desc}</p>
-            </a>
-            <div class="card-tooltip">{item.desc}</div>
+{cat && (
+  <div class="bookmark-grid">
+    {cat.items.map((item) => (
+      <div class="card-wrap">
+        <a href={item.url} target="_blank" rel="noopener noreferrer" class="bookmark-card">
+          <div class="card-header">
+            <span class="card-name">{item.name}</span>
+            {item.opensource && <span class="badge-oss">OSS</span>}
           </div>
-        ))}
+          <p class="card-desc">{item.desc}</p>
+        </a>
+        <div class="card-tooltip">{item.desc}</div>
       </div>
-    </section>
-  ))}
-</div>
+    ))}
+  </div>
+)}
