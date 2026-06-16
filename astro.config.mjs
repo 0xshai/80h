@@ -4,13 +4,11 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
   integrations: [
     starlight({
-      title: "Bookmarks",
-      defaultLocale: "root",
-      locales: { root: { label: "中文", lang: "zh-CN" } },
-      sidebar: [
-  { label: '书签', slug: 'bookmarks' },
-],
-      customCss: ["./src/styles/custom.css"],
-    }),
-  ],
-});
+  title: "Bookmarks",
+  defaultLocale: "root",
+  locales: { root: { label: "中文", lang: "zh-CN" } },
+  ui: {
+    'tableOfContents.onThisPage': '目录',
+  },
+  // ...其余配置不变
+}),

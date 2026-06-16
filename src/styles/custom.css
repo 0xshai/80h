@@ -185,7 +185,7 @@ site-search { display: none; }
   text-decoration: none;
   transition: background 0.12s;
   overflow: hidden;
-  height: 90px;
+  height: 85px;
   box-sizing: border-box;
 }
 .bookmark-card:hover { background: var(--cg-paper-press); }
