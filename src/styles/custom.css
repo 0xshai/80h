@@ -177,7 +177,7 @@ site-search { display: none; }
   text-decoration: none;
   transition: background 0.12s;
   overflow: hidden;
-  min-height: 80px;
+  height: 90px;
   box-sizing: border-box;
 }
 .bookmark-card:hover { background: var(--cg-paper-press); }
