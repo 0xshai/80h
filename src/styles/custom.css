@@ -140,8 +140,14 @@ site-search { display: none; }
   height: 0;
   overflow: hidden;
   border: none;
+  /* 隐藏锚点图标 */
+  anchor-name: none;
 }
 
+/* 锚点图标彻底隐藏 */
+.sl-markdown-content h2 a {
+  display: none;
+}
 /* ---- Content centering ---- */
 @media (min-width: 72rem) {
   .main-pane { --sl-content-margin-inline: auto; }
