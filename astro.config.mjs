@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 
 export default defineConfig({
+  site: "https://shaifx.vercel.app",
   integrations: [
     starlight({
       title: "闪光小破站",
