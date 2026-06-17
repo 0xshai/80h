@@ -18,18 +18,14 @@ export const bookmarks: Category[] = [
     { name: 'Lazygit', url: 'https://github.com/jesseduffield/lazygit', desc: '终端里的 Git 可视化工具', opensource: true },
     { name: 'Regex101', url: 'https://regex101.com', desc: '正则表达式在线调试，实时高亮匹配，支持多语言引擎' },
   ]},
+  { category: '图表工具', icon: '📊', items: [
+    { name: 'Mermaid', url: 'https://mermaid.js.org', desc: 'Markdown 风格图表语言，支持流程图、时序图、甘特图', opensource: true },
+    { name: 'D2', url: 'https://d2lang.com', desc: '现代图表脚本语言，自动布局，生成效果优秀', opensource: true },
+  ]},
   { category: '浏览器', icon: '🦁', items: [
     { name: 'Brave', url: 'https://brave.com/zh/', desc: '注重隐私的现代浏览器', opensource: true },
     { name: 'Zen Browser', url: 'https://zen-browser.app', desc: '极简界面的 Firefox 内核浏览器', opensource: true },
     { name: 'Mullvad Browser', url: 'https://mullvad.net/browser', desc: '由 Mullvad VPN 与 Tor 项目联合开发', opensource: true },
-  ]},
-  { category: '图像处理', icon: '🎨', items: [
-    { name: 'ArcBrush', url: 'https://arcbrush.com/', desc: '节点式修图工具' },
-    { name: 'Upscayl', url: 'https://upscayl.org', desc: 'AI 图片无损放大，本地运行', opensource: true },
-    { name: 'RapidRAW', url: 'https://github.com/CyberTimon/RapidRAW', desc: '轻量 GPU 加速 RAW 编辑器，界面简洁现代', opensource: true },
-    { name: 'remove.photos', url: 'https://remove.photos/zh-cn/', desc: '在线 AI 抠图，无需注册，免费下载高清透明图' },
-    { name: 'Squoosh', url: 'https://squoosh.app', desc: 'Google 出品的在线图片压缩工具，实时对比画质与体积，本地处理不上传', opensource: true },
-    { name: 'ImageMagick', url: 'https://imagemagick.org', desc: '命令行图片处理工具，批量转换格式、调整尺寸、压缩质量，功能全面', opensource: true },
   ]},
   { category: '下载工具', icon: '⬇️', items: [
     { name: 'MotrixNext', url: 'https://motrix-next.pages.dev/#', desc: '全能下载管理器', opensource: true },
@@ -46,6 +42,14 @@ export const bookmarks: Category[] = [
     { name: 'mpv', url: 'https://mpv.io', desc: '轻量高性能的命令行视频播放器，支持脚本扩展，GPU 解码，几乎兼容所有格式', opensource: true },
     { name: 'Screenbox', url: 'https://github.com/huynhsontung/Screenbox', desc: '基于 libVLC 的现代 Windows 视频播放器，界面简洁流畅，支持网络串流', opensource: true },
   ]},
+  { category: '图像处理', icon: '🎨', items: [
+    { name: 'ArcBrush', url: 'https://arcbrush.com/', desc: '节点式修图工具' },
+    { name: 'Upscayl', url: 'https://upscayl.org', desc: 'AI 图片无损放大，本地运行', opensource: true },
+    { name: 'RapidRAW', url: 'https://github.com/CyberTimon/RapidRAW', desc: '轻量 GPU 加速 RAW 编辑器，界面简洁现代', opensource: true },
+    { name: 'remove.photos', url: 'https://remove.photos/zh-cn/', desc: '在线 AI 抠图，无需注册，免费下载高清透明图' },
+    { name: 'Squoosh', url: 'https://squoosh.app', desc: 'Google 出品的在线图片压缩工具，实时对比画质与体积，本地处理不上传', opensource: true },
+    { name: 'ImageMagick', url: 'https://imagemagick.org', desc: '命令行图片处理工具，批量转换格式、调整尺寸、压缩质量，功能全面', opensource: true },
+  ]},
   { category: '设计', icon: '✏️', items: [
     { name: 'Penpot', url: 'https://penpot.app', desc: '开源 Figma 替代，可自托管', opensource: true },
     { name: 'Excalidraw', url: 'https://excalidraw.com', desc: '手绘风格白板工具', opensource: true },
@@ -57,17 +61,19 @@ export const bookmarks: Category[] = [
     { name: 'Scoop', url: 'https://scoop.sh', desc: 'Windows 命令行包管理器', opensource: true },
     { name: 'CrystalDiskInfo', url: 'https://crystalmark.info/en/software/crystaldiskinfo/', desc: '硬盘健康状态与 S.M.A.R.T. 监控工具', opensource: true },
     { name: 'WindowsCleaner', url: 'https://github.com/ElectroHeavenVN/WindowsCleaner', desc: '开源 Windows 垃圾清理工具，清除系统缓存、临时文件与无用注册表项', opensource: true },
-  ]},
-  { category: '翻译工具', icon: '🌐', items: [
-    { name: '欧路词典', url: 'https://www.eudic.net', desc: '专业英汉词典，支持本地词库' },
-    { name: '沙拉翻译', url: 'https://saladict.net/', desc: '浏览器划词翻译，可同步至欧路词典', opensource: true },
+    { name: 'RustDesk', url: 'https://rustdesk.com', desc: '开源跨平台远程桌面，支持自托管服务器，TeamViewer/AnyDesk 的隐私友好替代', opensource: true },
   ]},
   { category: '文件同步', icon: '🔄', items: [
     { name: 'Syncthing', url: 'https://syncthing.net', desc: '设备间直接同步，不经过任何服务器', opensource: true },
     { name: 'LocalSend', url: 'https://localsend.org', desc: '局域网内跨设备传文件，无需联网', opensource: true },
   ]},
-  { category: '输入法', icon: '⌨️', items: [
-    { name: '清风输入法', url: 'https://huanfeng.github.io/WindInput/', desc: '简洁轻量的输入法', opensource: true },
+  { category: '办公', icon: '📄', items: [
+    { name: 'OnlyOffice', url: 'https://www.onlyoffice.com', desc: '全平台开源办公套件，兼容 Office 格式', opensource: true },
+  ]},
+  { category: '笔记', icon: '📝', items: [
+    { name: 'Notesnook', url: 'https://notesnook.com', desc: '端对端加密笔记，注重隐私', opensource: true },
+    { name: 'Tolaria', url: 'https://tolaria.md/', desc: '本地优先的卡片式笔记工具', opensource: true },
+    { name: 'Obsidian', url: 'https://obsidian.md', desc: '本地优先的知识库与笔记工具，支持 Markdown' },
   ]},
   { category: '邮箱', icon: '📬', items: [
     { name: 'Outlook', url: 'https://outlook.com', desc: '微软邮箱，功能全面' },
@@ -83,27 +89,26 @@ export const bookmarks: Category[] = [
     { name: '2FAS', url: 'https://2fas.com', desc: '跨平台 2FA，支持浏览器扩展', opensource: true },
     { name: 'Ente Auth', url: 'https://ente.io/auth', desc: '端对端加密的跨平台 2FA，支持云备份', opensource: true },
   ]},
-  { category: '办公', icon: '📄', items: [
-    { name: 'OnlyOffice', url: 'https://www.onlyoffice.com', desc: '全平台开源办公套件，兼容 Office 格式', opensource: true },
-  ]},
-  { category: '笔记', icon: '📝', items: [
-    { name: 'Notesnook', url: 'https://notesnook.com', desc: '端对端加密笔记，注重隐私', opensource: true },
-    { name: 'Tolaria', url: 'https://tolaria.md/', desc: '本地优先的卡片式笔记工具', opensource: true },
-    { name: 'Obsidian', url: 'https://obsidian.md', desc: '本地优先的知识库与笔记工具，支持 Markdown' },
-  ]},
   { category: '加密云盘', icon: '☁️', items: [
     { name: 'Ente', url: 'https://ente.io', desc: '端对端加密的照片与视频存储服务', opensource: true },
     { name: 'Ente Locker', url: 'https://ente.com/locker', desc: '端对端加密的文档保险箱，支持紧急联系人移交', opensource: true },
     { name: 'Filen', url: 'https://filen.io', desc: '德国端对端加密云盘，可同步任意文件', opensource: true },
   ]},
-  { category: '效率工具', icon: '⏱️', items: [
-    { name: 'Super Productivity', url: 'https://super-productivity.com', desc: '本地优先的任务管理与时间追踪，支持 Jira/GitHub/GitLab 集成', opensource: true },
-    { name: 'ActivityWatch', url: 'https://activitywatch.net', desc: '自动记录应用与网页使用时间，数据完全本地，开源无云', opensource: true },
+  { category: '翻译工具', icon: '🌐', items: [
+    { name: '欧路词典', url: 'https://www.eudic.net', desc: '专业英汉词典，支持本地词库' },
+    { name: '沙拉翻译', url: 'https://saladict.net/', desc: '浏览器划词翻译，可同步至欧路词典', opensource: true },
+  ]},
+  { category: '输入法', icon: '⌨️', items: [
+    { name: '清风输入法', url: 'https://huanfeng.github.io/WindInput/', desc: '简洁轻量的输入法', opensource: true },
   ]},
   { category: '学习工具', icon: '📖', items: [
     { name: 'TypeWords', url: 'https://typewords.cc', desc: '以打字输入为核心的英语记忆系统，FSRS 间隔复习，数据本地存储', opensource: true },
     { name: 'Exercism', url: 'https://exercism.org', desc: '编程练习平台，有真人 mentor 异步代码评审，Python 轨道质量高', opensource: true },
     { name: 'Codewars', url: 'https://www.codewars.com', desc: '编程闯关练习，题目有趣，适合练语言本身而非刷算法' },
+  ]},
+  { category: '效率工具', icon: '⏱️', items: [
+    { name: 'Super Productivity', url: 'https://super-productivity.com', desc: '本地优先的任务管理与时间追踪，支持 Jira/GitHub/GitLab 集成', opensource: true },
+    { name: 'ActivityWatch', url: 'https://activitywatch.net', desc: '自动记录应用与网页使用时间，数据完全本地，开源无云', opensource: true },
   ]},
   { category: '本地 AI', icon: '🤖', items: [
     { name: 'Ollama', url: 'https://ollama.com', desc: '本地 LLM 运行时，一条命令拉模型，提供 OpenAI 兼容 API', opensource: true },
