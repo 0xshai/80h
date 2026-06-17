@@ -49,30 +49,38 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             </div>
           </div>
           <div class="hero-right">
-            <img src="/homepage_hero_art.svg" alt="书签站插图" />
+            <canvas id="hero-canvas"></canvas>
           </div>
         </section>
 
         <section class="features">
           <article class="feature">
             <svg class="ficon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="24" cy="24" r="18"/>
-              <path d="M24 6v36M6 24h36"/>
+              <polygon points="4,6 44,6 30,22 30,38 18,44 18,22" stroke-linejoin="round"/>
+              <line x1="8" y1="13" x2="40" y2="13" stroke-linecap="round"/>
+              <line x1="14" y1="20" x2="34" y2="20" stroke-linecap="round"/>
+              <circle cx="24" cy="40" r="4"/>
             </svg>
             <h2>精挑细选</h2>
             <p>每个分类只保留最实用的工具，有更好的产品就淘汰旧的。</p>
           </article>
           <article class="feature">
             <svg class="ficon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="8" y="8" width="32" height="32"/>
-              <path d="M8 20h32M20 8v32"/>
+              <path d="M24,4 L42,12 L42,26 Q42,38 24,44 Q6,38 6,26 L6,12 Z" stroke-linejoin="round"/>
+              <rect x="16" y="26" width="16" height="12" rx="2"/>
+              <path d="M18,26 Q18,18 24,18 Q30,18 30,26"/>
+              <circle cx="24" cy="32" r="2" fill="currentColor"/>
             </svg>
             <h2>隐私优先</h2>
             <p>优先推荐开源、本地优先、端到端加密的工具。</p>
           </article>
           <article class="feature">
             <svg class="ficon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M10 38L24 10l14 28M16 28h16"/>
+              <line x1="8" y1="14" x2="40" y2="14" stroke-linecap="round"/>
+              <line x1="14" y1="24" x2="40" y2="24" stroke-linecap="round"/>
+              <line x1="20" y1="34" x2="40" y2="34" stroke-linecap="round"/>
+              <circle cx="8" cy="24" r="4"/>
+              <circle cx="14" cy="34" r="4"/>
             </svg>
             <h2>极客极简</h2>
             <p>轻量、高效、无广告，让工具回归工具本身。</p>
@@ -111,7 +119,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       #icon-dark { display: none; }
       .hero { display: grid; grid-template-columns: 1.05fr 0.95fr; border-bottom: 1px solid var(--cg-rule); }
       .hero-left { padding: 4.5rem 3rem 4rem; }
-      .hero-right { border-inline-start: 1px solid var(--cg-rule); display: flex; align-items: center; justify-content: center; padding: 2.5rem; color: var(--cg-ink); }
+      .hero-right { border-inline-start: 1px solid var(--cg-rule); display: flex; align-items: center; justify-content: center; padding: 0; color: var(--cg-ink); overflow: hidden; }
+      #hero-canvas { display: block; width: 100%; height: 100%; min-height: 360px; }
       h1 { font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: 0.98; font-weight: 800; letter-spacing: -0.04em; margin: 0 0 1.6rem; }
       .lede { font-size: 1.18rem; line-height: 1.5; color: var(--cg-ink-2); max-width: 34ch; margin: 0 0 2.2rem; }
       .cta { display: flex; gap: 0.9rem; margin-bottom: 1.6rem; flex-wrap: wrap; }
@@ -159,6 +168,162 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       btn.addEventListener('click', function() {
         applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
       });
+    </script>
+    <script>
+      (function(){
+        var canvas=document.getElementById('hero-canvas');
+        if(!canvas)return;
+        var ctx=canvas.getContext('2d');
+        var W=canvas.parentElement.offsetWidth||500;
+        var H=canvas.parentElement.offsetHeight||400;
+        if(H<200)H=400;
+        canvas.width=W;canvas.height=H;
+        canvas.style.width='100%';canvas.style.height='100%';
+
+        var dark=document.documentElement.getAttribute('data-theme')==='dark';
+        function getP(){
+          dark=document.documentElement.getAttribute('data-theme')==='dark';
+          return{
+            nodeFill:dark?'rgba(83,74,183,0.12)':'rgba(83,74,183,0.07)',
+            nodeStroke:dark?'rgba(175,169,236,0.45)':'rgba(83,74,183,0.3)',
+            nodeHoverFill:dark?'rgba(83,74,183,0.28)':'rgba(83,74,183,0.14)',
+            nodeHoverStroke:dark?'rgba(200,196,255,1)':'rgba(53,47,155,0.9)',
+            edge:dark?'rgba(175,169,236,0.1)':'rgba(83,74,183,0.08)',
+            edgeHover:dark?'rgba(175,169,236,0.5)':'rgba(83,74,183,0.38)',
+            dot:dark?'rgba(210,206,255,0.85)':'rgba(83,74,183,0.75)',
+            tick:dark?'rgba(175,169,236,0.22)':'rgba(83,74,183,0.15)',
+            tickHover:dark?'rgba(200,196,255,0.9)':'rgba(53,47,155,0.8)',
+            text:dark?'rgba(200,198,215,0.7)':'rgba(50,44,100,0.62)',
+            textHover:dark?'rgba(235,232,255,1)':'rgba(36,30,120,1)',
+          };
+        }
+
+        var labels=['开源','隐私','书签','工具','极简','加密','本地','效率','无广告','精选','轻量','安全'];
+        var N=labels.length;
+        var MIN_GAP=18;
+
+        function initNodes(){
+          var ns=[];
+          for(var i=0;i<N;i++){
+            var r=28+Math.random()*10;
+            var x,y,ok,tries=0;
+            do{
+              ok=true;
+              x=r+20+Math.random()*(W-r*2-40);
+              y=r+20+Math.random()*(H-r*2-40);
+              for(var k=0;k<ns.length;k++){
+                var dx=ns[k].x-x,dy=ns[k].y-y;
+                if(Math.sqrt(dx*dx+dy*dy)<ns[k].r+r+MIN_GAP){ok=false;break;}
+              }
+            }while(!ok&&++tries<500);
+            ns.push({
+              x:x,y:y,vx:(Math.random()-0.5)*0.22,vy:(Math.random()-0.5)*0.22,
+              r:r,label:labels[i],phase:Math.random()*Math.PI*2,
+              spd:0.35+Math.random()*0.25,hovered:false,
+              tickAngle:Math.random()*Math.PI*2,
+              tickSpeed:(Math.random()<0.5?1:-1)*(0.007+Math.random()*0.005),
+              tickLen:0.35+Math.random()*0.45,
+              tickR:r+7+Math.random()*5,
+            });
+          }
+          return ns;
+        }
+
+        var nodes=initNodes();
+        var edges=[];
+        for(var i=0;i<N;i++){
+          for(var j=i+1;j<N;j++){
+            var dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y;
+            var d=Math.sqrt(dx*dx+dy*dy);
+            if(d<220&&Math.random()<0.45) edges.push([i,j,Math.random()]);
+          }
+        }
+
+        var mouse={x:-9999,y:-9999};
+        canvas.addEventListener('mousemove',function(e){
+          var rect=canvas.getBoundingClientRect();
+          mouse.x=(e.clientX-rect.left)*(W/rect.width);
+          mouse.y=(e.clientY-rect.top)*(H/rect.height);
+        });
+        canvas.addEventListener('mouseleave',function(){mouse.x=-9999;mouse.y=-9999;});
+
+        var t=0;
+        function draw(){
+          var P=getP();
+          ctx.clearRect(0,0,W,H);
+          t+=0.011;
+
+          for(var i=0;i<N;i++){
+            var n=nodes[i];
+            n.x+=n.vx+Math.sin(t*n.spd+n.phase)*0.15;
+            n.y+=n.vy+Math.cos(t*n.spd*0.75+n.phase)*0.12;
+            if(n.x<n.r+8){n.x=n.r+8;n.vx=Math.abs(n.vx);}
+            if(n.x>W-n.r-8){n.x=W-n.r-8;n.vx=-Math.abs(n.vx);}
+            if(n.y<n.r+8){n.y=n.r+8;n.vy=Math.abs(n.vy);}
+            if(n.y>H-n.r-8){n.y=H-n.r-8;n.vy=-Math.abs(n.vy);}
+            n.tickAngle+=n.tickSpeed;
+            var ddx=mouse.x-n.x,ddy=mouse.y-n.y;
+            n.hovered=Math.sqrt(ddx*ddx+ddy*ddy)<n.r+10;
+          }
+
+          for(var iter=0;iter<3;iter++){
+            for(var i=0;i<N;i++){
+              for(var j=i+1;j<N;j++){
+                var a=nodes[i],b=nodes[j];
+                var dx=b.x-a.x,dy=b.y-a.y;
+                var dist=Math.sqrt(dx*dx+dy*dy);
+                var minD=a.r+b.r+MIN_GAP;
+                if(dist<minD&&dist>0.01){
+                  var push=(minD-dist)*0.5;
+                  var nx=dx/dist,ny=dy/dist;
+                  a.x-=nx*push;a.y-=ny*push;
+                  b.x+=nx*push;b.y+=ny*push;
+                  a.vx-=nx*0.05;a.vy-=ny*0.05;
+                  b.vx+=nx*0.05;b.vy+=ny*0.05;
+                }
+              }
+            }
+          }
+
+          for(var ei=0;ei<edges.length;ei++){
+            var e=edges[ei],na=nodes[e[0]],nb=nodes[e[1]],off=e[2];
+            var active=na.hovered||nb.hovered;
+            var edx=nb.x-na.x,edy=nb.y-na.y;
+            ctx.beginPath();ctx.moveTo(na.x,na.y);ctx.lineTo(nb.x,nb.y);
+            ctx.strokeStyle=active?P.edgeHover:P.edge;
+            ctx.lineWidth=active?0.9:0.4;ctx.stroke();
+            var f=(off+t*0.32)%1;
+            ctx.beginPath();ctx.arc(na.x+edx*f,na.y+edy*f,1.7,0,Math.PI*2);
+            ctx.fillStyle=active?P.dot:(dark?'rgba(175,169,236,0.4)':'rgba(83,74,183,0.35)');
+            ctx.fill();
+          }
+
+          for(var i=0;i<N;i++){
+            var n=nodes[i];
+            var pulse=1+Math.sin(t*1.3+n.phase)*0.022;
+            var nr=n.r*pulse;
+            ctx.beginPath();ctx.arc(n.x,n.y,nr,0,Math.PI*2);
+            ctx.fillStyle=n.hovered?P.nodeHoverFill:P.nodeFill;ctx.fill();
+            ctx.strokeStyle=n.hovered?P.nodeHoverStroke:P.nodeStroke;
+            ctx.lineWidth=n.hovered?1.1:0.5;ctx.stroke();
+            var ta=n.tickAngle,tb=ta+n.tickLen*Math.PI*2;
+            ctx.beginPath();ctx.arc(n.x,n.y,n.tickR,ta,tb);
+            ctx.strokeStyle=n.hovered?P.tickHover:P.tick;
+            ctx.lineWidth=n.hovered?1.1:0.45;ctx.stroke();
+            ctx.beginPath();ctx.arc(n.x,n.y,n.tickR,ta+Math.PI,ta+Math.PI+n.tickLen*0.28*Math.PI*2);
+            ctx.strokeStyle=n.hovered?P.tickHover:P.tick;
+            ctx.lineWidth=n.hovered?0.7:0.35;ctx.stroke();
+            var fs=Math.round(nr*0.37);
+            ctx.font=(n.hovered?'500':'400')+' '+fs+'px sans-serif';
+            ctx.textAlign='center';ctx.textBaseline='middle';
+            ctx.fillStyle=n.hovered?P.textHover:P.text;
+            ctx.fillText(n.label,n.x,n.y);
+          }
+
+          requestAnimationFrame(draw);
+        }
+        draw();
+      })();
     </script>
   </body>
 </html>
