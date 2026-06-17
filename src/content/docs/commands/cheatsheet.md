@@ -96,6 +96,47 @@ description: "一句话描述"
 
 ## Git 常用命令
 
+### 两种上传方式
+
+**SSH 方式**（推荐，配置一次永不用输密码）
+
+```powershell
+# 前提：已在 GitHub 添加 SSH 公钥
+# 克隆
+git clone git@github.com:0xshai/仓库名.git
+
+# 切换为 SSH
+git remote set-url origin git@github.com:0xshai/仓库名.git
+```
+
+**HTTPS 方式**（用 Personal Access Token，不支持账号密码）
+
+```powershell
+# 克隆
+git clone https://github.com/0xshai/仓库名.git
+
+# 切换为 HTTPS
+git remote set-url origin https://github.com/0xshai/仓库名.git
+
+# 第一次 push 会提示输入用户名和 Token（输入后系统会记住）
+# Token 在 GitHub → Settings → Developer settings → Personal access tokens 生成
+```
+
+### 查看 / 切换远程地址
+
+```powershell
+# 查看当前用的哪种
+git remote -v
+
+# 切换为 SSH
+git remote set-url origin git@github.com:0xshai/仓库名.git
+
+# 切换为 HTTPS
+git remote set-url origin https://github.com/0xshai/仓库名.git
+```
+
+### 其他常用
+
 ```powershell
 # 查看状态
 git status
@@ -103,14 +144,8 @@ git status
 # 查看提交历史
 git log --oneline -10
 
-# 切换远程地址（SSH）
-git remote set-url origin git@github.com:0xshai/仓库名.git
-
 # 拉取最新代码
 git pull origin main
-
-# 查看远程地址
-git remote -v
 
 # 撤销最后一次提交（保留文件改动）
 git reset --soft HEAD~1
@@ -132,6 +167,9 @@ scoop install 软件名
 
 # 卸载软件
 scoop uninstall 软件名
+
+# 更新单个软件
+scoop update 软件名
 
 # 更新所有软件
 scoop update *
@@ -192,6 +230,37 @@ ffmpeg -i 输入.mp4 -vn -acodec copy 输出.aac
 
 ## Windows PowerShell 常用
 
+### 代理 / 网络切换
+
+```powershell
+# 查看当前代理设置
+[System.Net.WebRequest]::DefaultWebProxy
+
+# 设置代理（当前会话有效）
+$env:HTTP_PROXY = "http://127.0.0.1:7890"
+$env:HTTPS_PROXY = "http://127.0.0.1:7890"
+
+# 取消代理（切回直连）
+Remove-Item Env:HTTP_PROXY -ErrorAction SilentlyContinue
+Remove-Item Env:HTTPS_PROXY -ErrorAction SilentlyContinue
+
+# 给 Git 单独设置代理
+git config --global http.proxy http://127.0.0.1:7890
+
+# 取消 Git 代理
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+# 给 Scoop / PowerShell 设置全局代理（写入 profile，永久生效）
+# 编辑 $PROFILE，加入：
+# $env:HTTP_PROXY = "http://127.0.0.1:7890"
+# $env:HTTPS_PROXY = "http://127.0.0.1:7890"
+```
+
+> 端口号按你实际用的代理软件填写，常见：Clash 7890，V2rayN 10809。
+
+### 其他常用
+
 ```powershell
 # 查看文件内容
 Get-Content 文件路径
@@ -229,3 +298,133 @@ chore: 杂项（依赖更新等）
 ```
 
 示例：`git commit -m "feat: 新增工具说明分类"`
+
+---
+
+## Markdown 语法速查
+
+### 标题
+
+```markdown
+# 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+```
+
+### 文字样式
+
+```markdown
+**粗体**
+*斜体*
+~~删除线~~
+**_粗体加斜体_**
+`行内代码`
+```
+
+### 列表
+
+```markdown
+- 无序列表
+- 第二项
+  - 嵌套项（两个空格缩进）
+
+1. 有序列表
+2. 第二项
+   1. 嵌套有序
+
+- [x] 任务列表（已完成）
+- [ ] 任务列表（未完成）
+```
+
+### 链接与图片
+
+```markdown
+[链接文字](https://example.com)
+[链接文字](https://example.com "鼠标悬停提示")
+
+![图片描述](图片URL)
+![图片描述](图片URL "提示文字")
+
+<!-- 引用式链接，适合正文多次用到同一链接 -->
+[链接文字][id]
+[id]: https://example.com
+```
+
+### 引用
+
+```markdown
+> 这是一段引用
+> 可以多行
+
+> 第一层引用
+>> 嵌套引用
+```
+
+### 代码块
+
+````markdown
+`行内代码`
+
+```python
+# 指定语言，有语法高亮
+print("hello")
+```
+
+```
+不指定语言
+```
+````
+
+### 表格
+
+```markdown
+| 列1     | 列2     | 列3     |
+| ------- | :-----: | ------: |
+| 默认左对齐 | 居中  | 右对齐  |
+| 内容    | 内容    | 内容    |
+```
+
+> `:---` 左对齐，`:---:` 居中，`---:` 右对齐
+
+### 分隔线
+
+```markdown
+---
+```
+
+### 脚注
+
+```markdown
+这里有个注释[^1]。
+
+[^1]: 这是脚注内容，会显示在文章底部。
+```
+
+### 转义字符
+
+```markdown
+\*不想变成斜体\*
+\# 不想变成标题
+```
+
+常用需要转义的字符：`\ * _ # [ ] ( ) > + - . !`
+
+### HTML 混用
+
+```markdown
+<!-- 注释，不会渲染 -->
+
+<br> 强制换行
+
+<details>
+<summary>点击展开</summary>
+
+折叠内容写这里，上下各留一个空行。
+
+</details>
+
+<kbd>Ctrl</kbd> + <kbd>C</kbd>  <!-- 键盘按键样式 -->
+```
+
+> 注意：部分平台（如微信）不支持 HTML 混用，Obsidian / GitHub / Hugo 均支持。
