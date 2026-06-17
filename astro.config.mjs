@@ -16,7 +16,7 @@ export default defineConfig({
           items: [
             { label: "mpv 播放器", slug: "tools/mpv" },
             { label: "Lazygit 使用指南", slug: "tools/lazygit" },
-            { label: "LosslessCut 无损视频剪辑", slug: "tools/LosslessCut" },
+            { label: "LosslessCut 无损视频剪辑", slug: "tools/losslesscut" },
           ],
         },
         {
