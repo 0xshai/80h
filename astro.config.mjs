@@ -16,13 +16,14 @@ export default defineConfig({
           items: [
             { label: "mpv 播放器", slug: "tools/mpv" },
             { label: "Lazygit 使用指南", slug: "tools/lazygit" },
+            { label: "LosslessCut 无损视频剪辑", slug: "tools/LosslessCut" },
           ],
         },
         {
           label: "折腾记录", // 新增
           items: [
             {
-              label: "只改一个文件，README 自动同步",
+              label: "只改一个文件，README自动同步",
               slug: "tinkering/github-actions-readme",
             },
           ],
