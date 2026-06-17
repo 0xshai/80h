@@ -1,7 +1,6 @@
 ---
 title: "40k Stars 开源工具 LosslessCut：把 FFmpeg 的能力装进 GUI"
-tags: ["开源工具", "视频处理", "FFmpeg", "Windows"]
-draft: false
+description: "40k Stars 开源工具 LosslessCut：把 FFmpeg 的能力装进 GUI"
 ---
 
 剪视频，不用重新编码。
