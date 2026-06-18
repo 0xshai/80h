@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 
 export default defineConfig({
-  site: "https://80h.pages.dev", // 改成你的 CF Pages 地址
+  site: "https://80h.pages.dev",
   integrations: [
     starlight({
       title: "闪光小破站",
@@ -20,11 +20,21 @@ export default defineConfig({
           ],
         },
         {
-          label: "折腾记录", // 新增
+          label: "折腾记录",
           items: [
             {
               label: "只改一个文件，README自动同步",
               slug: "tinkering/github-actions-readme",
+            },
+          ],
+        },
+        // ✅ 新增：牛人故事
+        {
+          label: "牛人故事",
+          items: [
+            {
+              label: "Brendan Eich：JS 之父",
+              slug: "people/brendan-eich",
             },
           ],
         },
