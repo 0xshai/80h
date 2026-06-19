@@ -15,6 +15,14 @@ export default defineConfig({
             "data-website-id": "f4a49d2e-86fc-4591-909e-27b5dd86d5f4",
           },
         },
+        {
+          tag: "script",
+          attrs: {
+            defer: true,
+            src: "https://static.cloudflareinsights.com/beacon.min.js",
+            "data-cf-beacon": '{"token": "4605ca57afc94ff388ea827eb788b31a"}',
+          },
+        },
       ],
       defaultLocale: "root",
       locales: { root: { label: "中文", lang: "zh-CN" } },
