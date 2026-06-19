@@ -15,8 +15,9 @@ export default defineConfig({
           label: "工具秘籍",
           items: [
             { label: "mpv 播放器", slug: "tools/mpv" },
-            { label: "Lazygit 使用指南", slug: "tools/lazygit" },
+            { label: "Lazygit Git可视化工具", slug: "tools/lazygit" },
             { label: "LosslessCut 无损视频剪辑", slug: "tools/losslesscut" },
+            { label: "Voicebox 本地开源语音工作室", slug: "tools/voicebox" },
           ],
         },
         {
@@ -25,6 +26,10 @@ export default defineConfig({
             {
               label: "只改一个文件，README自动同步",
               slug: "tinkering/github-actions-readme",
+            },
+            {
+              label: "自选安装路径",
+              slug: "tinkering/custom-installation-path",
             },
           ],
         },
