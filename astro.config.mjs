@@ -6,6 +6,16 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "闪光小破站",
+      head: [
+        {
+          tag: "script",
+          attrs: {
+            defer: true,
+            src: "https://cloud.umami.is/script.js",
+            "data-website-id": "f4a49d2e-86fc-4591-909e-27b5dd86d5f4",
+          },
+        },
+      ],
       defaultLocale: "root",
       locales: { root: { label: "中文", lang: "zh-CN" } },
       sidebar: [
@@ -33,7 +43,6 @@ export default defineConfig({
             },
           ],
         },
-        // ✅ 新增：牛人故事
         {
           label: "牛人故事",
           items: [
