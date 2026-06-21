@@ -3,7 +3,7 @@ import { bookmarks } from '../data/bookmarks';
 import {
   Code2, Globe, Image, Download, Video, Play, Pencil, Settings,
   Languages, RefreshCw, Keyboard, Mail, Lock, KeyRound, FileText,
-  NotebookPen, Cloud, Zap, BookOpen, Cpu, Brain
+  NotebookPen, Cloud, Zap, BookOpen, Cpu, Brain, BarChart2
 } from 'lucide-astro';
 
 const { category } = Astro.props;
@@ -11,6 +11,7 @@ const cat = bookmarks.find(c => c.category === category);
 
 const iconMap: Record<string, any> = {
   '编程工具': Code2,
+  '图表工具': BarChart2,
   '浏览器': Globe,
   '图像处理': Image,
   '下载工具': Download,
@@ -33,13 +34,39 @@ const iconMap: Record<string, any> = {
   'AI 工具': Brain,
 };
 
+const colorMap: Record<string, string> = {
+  '编程工具': '#6366f1',
+  '图表工具': '#f59e0b',
+  '浏览器': '#3b82f6',
+  '图像处理': '#ec4899',
+  '下载工具': '#10b981',
+  '视频处理': '#ef4444',
+  '视频播放': '#ef4444',
+  '设计': '#8b5cf6',
+  '系统工具': '#64748b',
+  '翻译工具': '#06b6d4',
+  '文件同步': '#84cc16',
+  '输入法': '#f97316',
+  '邮箱': '#3b82f6',
+  '密码管理': '#ef4444',
+  '双因素认证': '#f59e0b',
+  '办公': '#6366f1',
+  '笔记': '#10b981',
+  '加密云盘': '#64748b',
+  '效率工具': '#f59e0b',
+  '学习工具': '#8b5cf6',
+  '本地 AI': '#06b6d4',
+  'AI 工具': '#ec4899',
+};
+
 const Icon = cat ? iconMap[cat.category] : null;
+const iconColor = cat ? (colorMap[cat.category] ?? 'currentColor') : 'currentColor';
 ---
 
 {cat && (
   <div class="bookmark-section">
     <p class="section-heading">
-      {Icon && <Icon size={13} stroke-width={2} />}
+      {Icon && <Icon size={13} stroke-width={2} color={iconColor} />}
       {cat.category}
     </p>
     <div class="bookmark-grid">
@@ -48,7 +75,7 @@ const Icon = cat ? iconMap[cat.category] : null;
           <a href={item.url} target="_blank" rel="noopener noreferrer" class="bookmark-card">
             <div class="card-header">
               <span class="card-name">{item.name}</span>
-              {item.opensource && <span class="badge-oss">开源</span>}
+              {item.opensource && <span class="badge-oss" style="color: #10b981; border-color: #10b98133;">开源</span>}
             </div>
             <p class="card-desc">{item.desc}</p>
           </a>
