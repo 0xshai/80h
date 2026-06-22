@@ -3,7 +3,8 @@ import { bookmarks } from '../data/bookmarks';
 import {
   Code2, Globe, Image, Download, Video, Play, Pencil, Settings,
   Languages, RefreshCw, Keyboard, Mail, Lock, KeyRound, FileText,
-  NotebookPen, Cloud, Zap, BookOpen, Cpu, Brain, BarChart2, Shield
+  NotebookPen, Cloud, Zap, BookOpen, Cpu, Brain, BarChart2, Shield,
+  Server
 } from 'lucide-astro';
 
 const { category } = Astro.props;
@@ -19,6 +20,7 @@ const iconMap: Record<string, any> = {
   '视频播放': Play,
   '设计': Pencil,
   '系统工具': Settings,
+  '自托管': Server,
   '翻译工具': Languages,
   '文件同步': RefreshCw,
   '输入法': Keyboard,
@@ -45,6 +47,7 @@ const colorMap: Record<string, string> = {
   '视频播放': '#ef4444',
   '设计': '#8b5cf6',
   '系统工具': '#64748b',
+  '自托管': '#0f766e',
   '翻译工具': '#06b6d4',
   '文件同步': '#84cc16',
   '输入法': '#f97316',

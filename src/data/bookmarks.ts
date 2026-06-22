@@ -273,6 +273,24 @@ export const bookmarks: Category[] = [
     ],
   },
   {
+    category: "自托管",
+    icon: "🏠",
+    items: [
+      {
+        name: "Immich",
+        url: "https://immich.app",
+        desc: "开源自托管相册，AI 识别人脸场景，Google Photos 替代",
+        opensource: true,
+      },
+      {
+        name: "Rancher Desktop",
+        url: "https://rancherdesktop.io",
+        desc: "开源容器管理桌面工具，内置 Docker 引擎，Docker Desktop 免费替代",
+        opensource: true,
+      },
+    ],
+  },
+  {
     category: "文件同步",
     icon: "🔄",
     items: [
