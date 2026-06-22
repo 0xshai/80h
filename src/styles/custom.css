@@ -292,7 +292,7 @@ starlight-toc a[href="#_top"] {
 .card-desc {
     font-size: 0.75rem;
     color: var(--cg-ink-2);
-    line-height: 1.45;
+    line-height: 1.4;
     margin: 0.35rem 0 0;
     overflow: hidden;
     display: -webkit-box;
