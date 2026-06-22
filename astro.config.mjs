@@ -54,6 +54,10 @@ export default defineConfig({
               label: "WSL2 跑 Docker，顺手装了 Immich",
               slug: "tinkering/wsl2-docker-immich",
             },
+            {
+              label: "Syncthing + Tailscale + Joplin",
+              slug: "tinkering/syncthing-tailscale-joplin",
+            },
           ],
         },
         {

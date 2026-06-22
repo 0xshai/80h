@@ -291,6 +291,18 @@ export const bookmarks: Category[] = [
     ],
   },
   {
+    category: "网络工具",
+    icon: "network", // 或 "globe"，看你 lucide-astro 里用哪个
+    items: [
+      {
+        name: "Tailscale",
+        url: "https://tailscale.com",
+        desc: "基于 WireGuard 的零配置组网工具，让自托管服务安全跨网络访问，无需暴露端口",
+        opensource: false,
+      },
+    ],
+  },
+  {
     category: "文件同步",
     icon: "🔄",
     items: [
