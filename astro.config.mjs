@@ -68,6 +68,10 @@ export default defineConfig({
               label: "Syncthing + Tailscale + Joplin",
               slug: "tinkering/syncthing-tailscale-joplin",
             },
+            {
+              label: "把网站提交给搜索引擎",
+              slug: "tinkering/search-engine-submission",
+            },
           ],
         },
         {
