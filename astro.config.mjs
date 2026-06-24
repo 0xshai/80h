@@ -47,6 +47,7 @@ export default defineConfig({
             { label: "yt-dlp 视频下载工具", slug: "tools/yt-dlp" },
             { label: "ShareX 完全指南", slug: "tools/sharex-guide" },
             { label: "MarkItDown 使用说明", slug: "tools/markitdown" },
+            { label: "WinUtil Windows优化工具", slug: "tools/winutil" },
           ],
         },
         {

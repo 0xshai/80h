@@ -312,6 +312,12 @@ export const bookmarks: Category[] = [
         desc: "开源跨平台远程桌面，支持自托管服务器，TeamViewer/AnyDesk 的隐私友好替代",
         opensource: true,
       },
+      {
+        name: "WinUtil",
+        url: "https://christitustech.github.io/winutil/",
+        desc: "Chris Titus 出品的 Windows 一键优化工具，安装软件、系统调整、去除臃肿，一条命令启动",
+        opensource: true,
+      },
     ],
   },
   {
@@ -582,6 +588,12 @@ export const bookmarks: Category[] = [
     category: "输入法",
     icon: "⌨️",
     items: [
+      {
+        name: "小狼毫",
+        url: "https://rime.im/",
+        desc: "开源跨平台输入法框架 RIME 的 Windows 客户端，支持拼音、五笔、注音等，无广告无遥测，高度可定制",
+        opensource: true,
+      },
       {
         name: "清风输入法",
         url: "https://huanfeng.github.io/WindInput/",
