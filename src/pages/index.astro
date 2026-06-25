@@ -60,7 +60,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
         <section class="features">
           <article class="feature">
-            <!-- 精挑细选：钻石切割 + 剔除线 -->
+            <!-- 精挑细选：纯钻石 -->
             <svg class="ficon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
               <!-- 钻石轮廓 -->
               <polygon points="24,5 40,18 24,44 8,18" stroke-linejoin="miter"/>
@@ -74,25 +74,23 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               <!-- 底部刻面 -->
               <line x1="16" y1="18" x2="24" y2="44"/>
               <line x1="32" y1="18" x2="24" y2="44"/>
-              <!-- 剔除标记：右上角打叉的小圆 -->
-              <circle cx="38" cy="9" r="4.5"/>
-              <line x1="35.8" y1="6.8" x2="40.2" y2="11.2" stroke-width="1"/>
-              <line x1="40.2" y1="6.8" x2="35.8" y2="11.2" stroke-width="1"/>
             </svg>
             <h2>精挑细选</h2>
             <p>每个工具，你向AI咨询它的底细，都会令你感到震惊。并且，如果出现更好的同类工具，老工具将面临淘汰。</p>
           </article>
           <article class="feature">
-            <!-- 隐私优先：六边形盾 + 眼睛划掉 -->
+            <!-- 开源精神：git branch 分支图标 -->
             <svg class="ficon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
-              <!-- 六边形盾 -->
-              <path d="M24,4 L40,11 L40,27 Q40,38 24,44 Q8,38 8,27 L8,11 Z" stroke-linejoin="round"/>
-              <!-- 眼睛轮廓 -->
-              <path d="M15,24 Q24,16 33,24 Q24,32 15,24 Z"/>
-              <!-- 瞳孔 -->
-              <circle cx="24" cy="24" r="3" stroke-width="1"/>
-              <!-- 斜杠划掉 -->
-              <line x1="15" y1="17" x2="33" y2="31" stroke-width="1.4"/>
+              <!-- 主干节点（下） -->
+              <circle cx="14" cy="38" r="4"/>
+              <!-- 主干节点（上） -->
+              <circle cx="14" cy="10" r="4"/>
+              <!-- 分支节点（右） -->
+              <circle cx="36" cy="10" r="4"/>
+              <!-- 主干竖线 -->
+              <line x1="14" y1="14" x2="14" y2="34" stroke-linecap="round"/>
+              <!-- 分支曲线：从主干上节点弯向右侧节点 -->
+              <path d="M14,22 C14,30 36,30 36,14" stroke-linecap="round"/>
             </svg>
             <h2>开源精神</h2>
             <p>老祖宗早就说了：“要有开源精神。”，所以优先推荐开源、本地优先、端到端加密的工具。</p>
