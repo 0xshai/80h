@@ -48,6 +48,7 @@ export default defineConfig({
             { label: "ShareX 完全指南", slug: "tools/sharex-guide" },
             { label: "MarkItDown 使用说明", slug: "tools/markitdown" },
             { label: "WinUtil Windows优化工具", slug: "tools/winutil" },
+            { label: "ExifTool 使用指南", slug: "tools/exiftool-guide" },
           ],
         },
         {
