@@ -4,7 +4,7 @@ import {
   Code2, Globe, Image, Download, Video, Play, Pencil, Settings,
   Languages, RefreshCw, Keyboard, Mail, Lock, KeyRound, FileText,
   NotebookPen, Cloud, Zap, BookOpen, Cpu, Brain, BarChart2, Shield,
-  Server, Network, Monitor
+  Server, Network, Monitor, ShoppingBag
 } from 'lucide-astro';
 
 const { category } = Astro.props;
@@ -16,6 +16,7 @@ const iconMap: Record<string, any> = {
   '浏览器': Globe,
   '图像处理': Image,
   '下载工具': Download,
+  '应用商店': ShoppingBag,
   '视频处理': Video,
   '视频播放': Play,
   '设计': Pencil,
@@ -45,6 +46,7 @@ const colorMap: Record<string, string> = {
   '浏览器': '#3b82f6',
   '图像处理': '#ec4899',
   '下载工具': '#10b981',
+  '应用商店': '#f97316',
   '视频处理': '#ef4444',
   '视频播放': '#ef4444',
   '设计': '#8b5cf6',

@@ -135,6 +135,12 @@ export const bookmarks: Category[] = [
         desc: "开源跨平台应用商店，聚合 GitHub/Codeberg 上的开发者发布，支持一键安装与自动更新",
         opensource: true,
       },
+      {
+        name: "F-Droid",
+        url: "https://f-droid.org",
+        desc: "完全开源的 Android 应用商店，所有应用均可自由获取，无追踪无广告",
+        opensource: true,
+      },
     ],
   },
   {
