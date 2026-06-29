@@ -330,12 +330,23 @@ export const bookmarks: Category[] = [
         desc: "开源容器管理桌面工具，内置 Docker 引擎，Docker Desktop 免费替代",
         opensource: true,
       },
+      {
+        name: "Supabase",
+        url: "https://supabase.com",
+        desc: "开源 Firebase 替代，提供 PostgreSQL 数据库、用户认证、文件存储和 API，支持自托管",
+        opensource: true,
+      },
     ],
   },
   {
     category: "网站工具",
     icon: "🌍",
     items: [
+      {
+        name: "Vercel",
+        url: "https://vercel.com",
+        desc: "前端应用部署平台，连接 GitHub 自动构建上线，Next.js 原生支持，免费额度够个人项目",
+      },
       {
         name: "Umami",
         url: "https://umami.is",
@@ -401,6 +412,18 @@ export const bookmarks: Category[] = [
         name: "deSEC",
         url: "https://desec.io",
         desc: "德国非营利免费 DNS 托管，隐私友好，提供 dedyn.io 子域名，支持动态 DNS",
+        opensource: true,
+      },
+      {
+        name: "DigitalPlat",
+        url: "https://domain.digitalplat.org",
+        desc: "非营利免费域名平台，提供 dpdns.org、us.kg 等多个后缀，开源，规模大且可靠",
+        opensource: true,
+      },
+      {
+        name: "Stackryze",
+        url: "https://domain.stackryze.com",
+        desc: "面向开发者的免费子域名服务，提供 indevs.in 等后缀，开源透明，域名有效期一年需手动续期",
         opensource: true,
       },
     ],
