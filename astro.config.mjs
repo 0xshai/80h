@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 
 export default defineConfig({
-  site: "https://80h.pages.dev",
+  site: "https://80h.cc.cd",
   integrations: [
     starlight({
       title: "闪光小破站",
