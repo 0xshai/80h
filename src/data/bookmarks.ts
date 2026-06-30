@@ -799,6 +799,12 @@ export const bookmarks: Category[] = [
         desc: "在 GitHub 内直接免费试用各家主流 AI 模型，无需额外注册",
         opensource: false,
       },
+      {
+        name: "Karpathy Claude Code Guidelines",
+        url: "https://github.com/multica-ai/andrej-karpathy-skills",
+        desc: "单文件 CLAUDE.md 配置，源自 Karpathy 对 LLM 编程通病的总结，约束 AI 减少过度工程化与越界改动",
+        opensource: true,
+      },
     ],
   },
 ];
