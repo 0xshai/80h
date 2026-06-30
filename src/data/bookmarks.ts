@@ -468,6 +468,11 @@ export const bookmarks: Category[] = [
         desc: "面向开发者的免费子域名服务，提供 indevs.in 等后缀，开源透明，域名有效期一年需手动续期",
         opensource: true,
       },
+      {
+        name: "KataBump",
+        url: "https://katabump.com",
+        desc: "提供免费永久域名（无需续期），同时支持 Discord 机器人免费托管",
+      },
     ],
   },
   {
