@@ -4,7 +4,7 @@ import {
   Code2, Globe, Image, Download, Video, Play, Pencil, Settings,
   Languages, RefreshCw, Keyboard, Mail, Lock, KeyRound, FileText,
   NotebookPen, Cloud, Zap, BookOpen, Cpu, Brain, BarChart2, Shield,
-  Server, Network, Monitor, ShoppingBag
+  Server, Network, Monitor, ShoppingBag, Timer, VenetianMask
 } from 'lucide-astro';
 
 const { category } = Astro.props;
@@ -28,6 +28,8 @@ const iconMap: Record<string, any> = {
   '文件同步': RefreshCw,
   '输入法': Keyboard,
   '邮箱': Mail,
+  '临时邮箱': Timer,
+  '邮箱别名': VenetianMask,
   '密码管理': Lock,
   '双因素认证': KeyRound,
   '隐私安全': Shield,
@@ -58,6 +60,8 @@ const colorMap: Record<string, string> = {
   '文件同步': '#84cc16',
   '输入法': '#f97316',
   '邮箱': '#3b82f6',
+  '临时邮箱': '#eab308',
+  '邮箱别名': '#a855f7',
   '密码管理': '#ef4444',
   '双因素认证': '#f59e0b',
   '隐私安全': '#10b981',
