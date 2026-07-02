@@ -81,6 +81,12 @@ export const bookmarks: Category[] = [
         desc: "开源一体化白板，思维导图、流程图、自由画三合一，支持 Mermaid/Markdown 导入，可自托管",
         opensource: true,
       },
+      {
+        name: "Archify",
+        url: "https://tt-a1i.github.io/archify/",
+        desc: "Claude/Codex CLI/opencode 的 Agent Skill，用自然语言描述系统结构自动生成架构图/工作流/时序图/数据流图/状态机图，深浅色主题切换 + 4× 无损导出",
+        opensource: true,
+      },
     ],
   },
   {
