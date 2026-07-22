@@ -3,7 +3,7 @@ title: "常用命令速查"
 description: "个人常用命令汇总：网站维护、Git、Scoop、多媒体处理等。"
 ---
 
-import { Aside, Card, CardGrid, Steps } from '@astrojs/starlight/components';
+import { Aside, Card, CardGrid, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
 ## 日常推送
 
@@ -310,7 +310,8 @@ HandBrakeCLI -i 输入.mp4 -o 输出.mp4 --encoder svt_av1 --quality 30 --encode
 
 ## Windows 快捷键
 
-### 截图与录屏
+<Tabs>
+<TabItem label="截图与录屏">
 
 | 快捷键 | 功能 |
 |---|---|
@@ -320,7 +321,8 @@ HandBrakeCLI -i 输入.mp4 -o 输出.mp4 --encoder svt_av1 --quality 30 --encode
 | `Win + G` | 打开 Xbox Game Bar |
 | `Win + Alt + R` | 开始/停止录制当前窗口 |
 
-### 窗口管理
+</TabItem>
+<TabItem label="窗口管理">
 
 | 快捷键 | 功能 |
 |---|---|
@@ -332,7 +334,8 @@ HandBrakeCLI -i 输入.mp4 -o 输出.mp4 --encoder svt_av1 --quality 30 --encode
 | `Alt + Tab` | 切换窗口 |
 | `Win + Ctrl + ←/→` | 切换虚拟桌面 |
 
-### 文件资源管理器
+</TabItem>
+<TabItem label="文件资源管理器">
 
 | 快捷键 | 功能 |
 |---|---|
@@ -342,7 +345,8 @@ HandBrakeCLI -i 输入.mp4 -o 输出.mp4 --encoder svt_av1 --quality 30 --encode
 | `F2` | 重命名 |
 | `Ctrl + Shift + N` | 新建文件夹 |
 
-### 系统
+</TabItem>
+<TabItem label="系统">
 
 | 快捷键 | 功能 |
 |---|---|
@@ -351,6 +355,9 @@ HandBrakeCLI -i 输入.mp4 -o 输出.mp4 --encoder svt_av1 --quality 30 --encode
 | `Win + V` | 剪贴板历史 |
 | `Win + .` | 表情符号面板 |
 | `Ctrl + Shift + Esc` | 直接打开任务管理器 |
+
+</TabItem>
+</Tabs>
 
 ---
 
