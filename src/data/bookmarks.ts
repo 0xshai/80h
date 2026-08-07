@@ -636,12 +636,6 @@ export const bookmarks: Category[] = [
         desc: "最好的开源密码管理器，可自托管",
         opensource: true,
       },
-      {
-        name: "Keyguard",
-        url: "https://github.com/AChep/keyguard-app",
-        desc: "Bitwarden 第三方客户端，界面更现代",
-        opensource: true,
-      },
     ],
   },
   {
