@@ -738,7 +738,7 @@ export const bookmarks: Category[] = [
       {
         name: "VoiceTra",
         url: "https://voicetra.nict.go.jp",
-        desc: "日本 NICT 出品的语音互译工具，支持 30+ 语言实时语音对话翻译，完全免费",
+        desc: "日本 NICT 出品的语音互译工具，支持 30+ 语言实时语音对话翻译，仅限手机 App，完全免费",
       },
     ],
   },
