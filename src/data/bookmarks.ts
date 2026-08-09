@@ -442,6 +442,11 @@ export const bookmarks: Category[] = [
         desc: "全球多节点 DNS 解析传播检测，换域名或改 DNS 记录后查各地解析是否已生效",
         opensource: false,
       },
+      {
+        name: "ip.cx",
+        url: "https://ip.cx",
+        desc: "IP 归属地与威胁情报查询工具，可查 ISP、ASN、数据中心/代理识别、威胁记录等，免费无需注册",
+      },
     ],
   },
   {
