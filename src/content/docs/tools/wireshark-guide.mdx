@@ -1,0 +1,241 @@
+---
+title: Wireshark 抓包入门指南
+description: 从安装、过滤器语法到实战排障的完整命令与操作参考
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Wireshark 是网络协议分析领域的事实标准，开源、免费、跨平台，协议库覆盖 TCP/IP、HTTP、DNS、TLS 等几乎所有你能遇到的协议。排查"网络慢""连不上"这类问题，抓包看数据实际发生了什么，比任何猜测都可靠。
+
+## 安装
+
+**Windows / macOS**
+
+从 [wireshark.org](https://www.wireshark.org/) 下载对应平台的安装包，按提示安装即可，Windows 版会附带 Npcap 驱动（抓包必需）。
+
+也可以用 Scoop 安装：
+
+```powershell
+scoop install wireshark
+```
+
+**Linux（以 Debian/Ubuntu 为例）**
+
+```bash
+sudo apt install wireshark
+```
+
+<Aside type="caution">
+Linux 下普通用户默认没有抓包权限，需要把自己加入 `wireshark` 用户组：
+
+```bash
+sudo usermod -aG wireshark $USER
+```
+
+加入用户组后需要重新登录才生效，否则接口列表里的网卡会是灰的，无法选中。
+</Aside>
+
+---
+
+## 一、基础抓包
+
+### 选择接口开始抓包
+
+打开 Wireshark，首页列出所有网络接口（有线网卡、WiFi、VPN 虚拟网卡等），旁边有实时流量小图。双击想抓的接口即可开始实时捕获。
+
+### 命令行抓包（tshark）
+
+Wireshark 附带的命令行工具，适合无图形界面的服务器：
+
+```bash
+tshark -i eth0
+```
+
+### 抓包并写入文件
+
+```bash
+tshark -i eth0 -w capture.pcap
+```
+
+### 只抓指定数量的包
+
+```bash
+tshark -i eth0 -c 100 -w capture.pcap
+```
+
+### 读取已保存的抓包文件
+
+```bash
+tshark -r capture.pcap
+```
+
+<Aside type="tip">
+图形界面里主界面分三块：上方包列表（时间/源地址/目的地址/协议/摘要）、中间包详情（分层展开以太网帧 → IP → TCP/UDP → 应用层）、下方十六进制原始字节视图。日常排障主要用前两块。
+</Aside>
+
+---
+
+## 二、过滤器（Display Filter）
+
+过滤器是 Wireshark 最核心的功能，不用过滤器直接看几万个包基本无法工作。
+
+### 按 IP 过滤
+
+```
+ip.addr == 192.168.1.1
+ip.src == 192.168.1.1
+ip.dst == 192.168.1.1
+```
+
+### 按端口/协议过滤
+
+```
+tcp.port == 443
+http
+dns
+tls
+```
+
+### 按 TCP 标志位过滤
+
+```
+tcp.flags.syn == 1
+tcp.flags.reset == 1
+```
+
+### 按 HTTP 状态码过滤
+
+```
+http.response.code == 404
+http.request.method == "POST"
+```
+
+### 查找重传（丢包排查关键）
+
+```
+tcp.analysis.retransmission
+```
+
+### 组合过滤
+
+```
+ip.addr == 192.168.1.1 && tcp.port == 443
+http || dns
+```
+
+<Aside type="tip">
+输入过滤条件时框内会实时提示颜色——绿色表示语法正确，红色表示错误，写复杂表达式时不用等按下回车才知道对不对。
+</Aside>
+
+---
+
+## 三、还原会话（Follow Stream）
+
+排障时经常需要的不是单个包，而是一次完整往来。在包列表里右键任意一个包：
+
+**Follow → TCP Stream**（或 HTTP Stream / TLS Stream）
+
+会把这次会话的所有数据按时间顺序拼接展示，客户端和服务端的数据用不同颜色区分，对确认请求头、响应体内容特别有用。
+
+命令行等价操作（提取某个 TCP 流）：
+
+```bash
+tshark -r capture.pcap -q -z follow,tcp,ascii,0
+```
+
+`0` 是流编号（stream index），可以先用 `tshark -r capture.pcap` 看包列表确定编号。
+
+---
+
+## 四、统计功能
+
+Statistics 菜单提供宏观视角，避免只见树木不见森林：
+
+| 功能 | 用途 |
+|------|------|
+| Protocol Hierarchy | 查看各协议占流量的比例 |
+| Conversations | 按 IP 对/端口对聚合，看谁跟谁通信最多 |
+| I/O Graph | 流量随时间变化的图表 |
+| Endpoints | 列出所有出现过的端点及流量统计 |
+
+命令行查看协议分布：
+
+```bash
+tshark -r capture.pcap -q -z io,phs
+```
+
+---
+
+## 五、导出与保存
+
+### 导出当前过滤结果为新文件
+
+File → Export Specified Packets，选择 "Displayed" 只导出过滤后可见的包。
+
+### 命令行按过滤条件导出
+
+```bash
+tshark -r capture.pcap -Y "http" -w http_only.pcap
+```
+
+### 导出为 CSV（字段自定义）
+
+```bash
+tshark -r capture.pcap -T fields -e frame.time -e ip.src -e ip.dst -e tcp.port -E header=y -E separator=, > output.csv
+```
+
+<Aside type="tip">
+抓包文件可能包含敏感信息（Cookie、明文密码等），分享给他人排障前先确认过滤掉无关流量，必要时用 Edit → Preferences 里的选项脱敏，或只导出需要的字段。
+</Aside>
+
+---
+
+## 六、常用参数速查
+
+| 参数/表达式 | 说明 |
+|------|------|
+| `-i` | 指定抓包接口 |
+| `-w` | 写入文件 |
+| `-r` | 读取已有抓包文件 |
+| `-c` | 限制抓包数量 |
+| `-Y` | 按 display filter 过滤（读取时用） |
+| `tcp.analysis.retransmission` | 查找重传（丢包排查） |
+| `tcp.flags.syn == 1` | 查找 TCP 握手 SYN 包 |
+| `tls.handshake.type == 1` | 查找 TLS Client Hello |
+
+---
+
+## 七、实战案例：排查网站间歇性打不开
+
+1. **先抓包再复现问题**：开始抓包后立刻访问目标网站
+2. **过滤 DNS**：`dns`，确认域名解析是否正常返回、有没有超时重试
+3. **过滤目标 IP**：解析出 IP 后用 `ip.addr == 目标IP` 单独看这次连接
+4. **看 TCP 握手**：`tcp.flags.syn == 1`，确认 SYN 发出后有没有收到 SYN-ACK；只有 SYN 没有回应，说明是网络层或防火墙问题
+5. **看有没有重传**：`tcp.analysis.retransmission`，大量结果说明链路存在丢包
+6. **看 TLS 握手**（HTTPS 场景）：`tls.handshake`，确认握手是否顺利完成，有没有卡在某个阶段
+
+按这个顺序走一遍，通常能把问题定位到具体哪一层。
+
+---
+
+## 八、常见问题
+
+**Q：接口列表里网卡是灰色的，选不了？**
+
+Linux 下检查是否已加入 `wireshark` 用户组并重新登录；Windows 下确认 Npcap 是否正确安装。
+
+**Q：抓包文件太大怎么办？**
+
+抓包时用 `-c` 限制数量，或者用捕获过滤器（capture filter，抓包前生效，语法与 display filter 不同）只抓需要的流量，比如 `tshark -i eth0 -f "port 443"`。
+
+**Q：display filter 和 capture filter 有什么区别？**
+
+Capture filter 在抓包时就过滤，减少文件体积，语法类似 tcpdump（如 `port 443`）；display filter 在已抓到的包里筛选显示，语法更丰富（如 `tcp.port == 443`），两者不能混用。
+
+---
+
+## 延伸阅读
+
+- [Wireshark 官网](https://www.wireshark.org/)
+- [Wireshark 官方文档](https://www.wireshark.org/docs/)
+- [Display Filter 语法参考](https://www.wireshark.org/docs/dfref/)

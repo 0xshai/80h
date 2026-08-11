@@ -51,6 +51,7 @@ export default defineConfig({
             { label: "ExifTool 图片视频元数据", slug: "tools/exiftool-guide" },
             { label: "MAT2 元数据清除工具", slug: "tools/mat2" },
             { label: "n8n 工作流自动化中心", slug: "tools/n8n-self-host" },
+            { label: "wireshark 抓包入门指南", slug: "tools/wireshark-guide" },
           ],
         },
         {
