@@ -793,6 +793,11 @@ export const bookmarks: Category[] = [
         opensource: true,
       },
       {
+        name: "Enjoy",
+        url: "https://github.com/ZuodaoTech/everyone-can-use-english",
+        desc: "李笑来《人人都能用英语》官方仓库，同时包含衍生出的 AI 外语学习助教 Enjoy（精听跟读、词典、语料训练）及\"一千小时\"训练方法论",
+      },
+      {
         name: "Exercism",
         url: "https://exercism.org",
         desc: "编程练习平台，有真人 mentor 异步代码评审，Python 轨道质量高",
