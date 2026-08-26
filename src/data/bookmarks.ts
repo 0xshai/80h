@@ -351,6 +351,24 @@ export const bookmarks: Category[] = [
     ],
   },
   {
+    category: "数据恢复",
+    icon: "🚑",
+    items: [
+      {
+        name: "TestDisk & PhotoRec",
+        url: "https://www.cgsecurity.org/wiki/TestDisk",
+        desc: "开源数据恢复工具组合，TestDisk 修复分区表与引导扇区，PhotoRec 从损坏或格式化的存储设备中找回文件",
+        opensource: true,
+      },
+      {
+        name: "GNU ddrescue",
+        url: "https://www.gnu.org/software/ddrescue/",
+        desc: "块级磁盘镜像与恢复工具，专为故障硬盘设计，优先读取健康区域并跳过坏块，最大化找回数据",
+        opensource: true,
+      },
+    ],
+  },
+  {
     category: "自托管",
     icon: "🏠",
     items: [
@@ -567,6 +585,12 @@ export const bookmarks: Category[] = [
         name: "Obsidian",
         url: "https://obsidian.md",
         desc: "本地优先的知识库与笔记工具，支持 Markdown",
+      },
+      {
+        name: "SoloMD",
+        url: "https://solomd.app",
+        desc: "开源轻量 Markdown 编辑器，本地优先零遥测，内置 MCP 服务器可直接对接 Claude/Cursor，支持 PDF/DOCX/EPUB 导出",
+        opensource: true,
       },
     ],
   },
