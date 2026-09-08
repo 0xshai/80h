@@ -183,6 +183,12 @@ export const bookmarks: Category[] = [
         desc: "视频与音频文件技术参数查看工具，编码、码率、色彩空间等信息一览无余",
         opensource: true,
       },
+      {
+       name: "Gyroflow",
+       url: "https://gyroflow.xyz",
+       desc: "开源陀螺仪防抖工具，为动作相机视频提供云台级稳定处理",
+       opensource: true,
+      },
     ],
   },
   {
