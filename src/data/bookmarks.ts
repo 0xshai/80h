@@ -689,6 +689,12 @@ export const bookmarks: Category[] = [
         desc: "最好的开源密码管理器，可自托管",
         opensource: true,
       },
+      {
+        name: "AliasVault",
+        url: "https://www.aliasvault.net/",
+        desc: "开源端到端加密密码管理器，内置邮箱别名生成器和邮件服务器，支持自托管",
+        opensource: true,
+      },
     ],
   },
   {
