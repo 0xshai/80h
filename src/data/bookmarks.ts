@@ -277,6 +277,12 @@ export const bookmarks: Category[] = [
         desc: "手绘风格白板工具",
         opensource: true,
       },
+      {
+        name: "ray.so",
+        url: "https://ray.so/",
+        desc: "Vercel团队出品的代码截图生成工具，支持多主题渐变背景，可直接导出PNG/SVG",
+        opensource: true,
+      },
     ],
   },
   {
