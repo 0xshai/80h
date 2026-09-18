@@ -51,6 +51,12 @@ export const bookmarks: Category[] = [
         desc: "代码质量检测工具，离线分析复杂度/重复度/命名等七项指标并打分，支持接入 AI 做代码审查",
         opensource: true,
       },
+      {
+        name: "Maple Mono",
+        url: "https://font.subf.dev/",
+        desc: "圆角连字编程字体,支持中英文 2:1 完美对齐(CN 版),Nerd Font 图标齐全",
+        opensource: true,
+      },
     ],
   },
   {
