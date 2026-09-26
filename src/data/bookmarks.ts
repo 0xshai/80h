@@ -869,6 +869,12 @@ export const bookmarks: Category[] = [
         opensource: false,
       },
       {
+        name: "AMEPOnline",
+        url: "https://ameponline.homeaffairs.gov.au/",
+        desc: "澳大利亚政府免费英语学习平台，五个等级听说读写课程，任何人可用不限移民身份",
+        opensource: false,
+      },
+      {
         name: "Musicca",
         url: "https://www.musicca.com",
         desc: "互动式乐理学习工具，提供视奏、节奏、和弦等免费练习",
