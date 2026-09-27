@@ -875,6 +875,12 @@ export const bookmarks: Category[] = [
         opensource: false,
       },
       {
+        name: "Standard Ebooks",
+        url: "https://standardebooks.org/",
+        desc: "公共领域英文小说库,约1500本志愿者精校排版电子书,epub/azw3/kepub格式,排版质量高",
+        opensource: true,
+      },
+      {
         name: "Musicca",
         url: "https://www.musicca.com",
         desc: "互动式乐理学习工具，提供视奏、节奏、和弦等免费练习",
